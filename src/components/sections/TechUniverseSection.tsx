@@ -10,166 +10,133 @@ import { cn } from "@/lib/utils";
 interface SkillNode {
   name: string;
   desc: string;
-  category: "de" | "ai" | "prog" | "analytics" | "cloud" | "tools";
-  relations: string[]; // Related skills to highlight
+  category: "primary" | "secondary" | "ai";
+  relations: string[];
 }
 
 export function TechUniverseSection() {
   const [hoveredNode, setHoveredNode] = useState<SkillNode | null>(null);
 
   const skills: SkillNode[] = [
-    // Data Engineering
+    // PRIMARY STACK
     {
       name: "Azure Databricks",
       desc: "Managed Apache Spark analytics platform used for scalable conformed data transformations and Delta table computations.",
-      category: "de",
+      category: "primary",
       relations: ["PySpark", "Delta Lake", "Python"]
     },
     {
       name: "Azure Data Factory",
       desc: "Cloud-scale serverless ETL and orchestration tool for importing source transaction tables into the Bronze landing layer.",
-      category: "de",
+      category: "primary",
       relations: ["Delta Lake", "SQL Server"]
     },
     {
       name: "PySpark",
       desc: "Python API for Apache Spark. Utilized for scalable, conformed cleansing, transformations, and SCD calculations.",
-      category: "de",
+      category: "primary",
       relations: ["Azure Databricks", "Python", "Delta Lake"]
     },
     {
       name: "Delta Lake",
       desc: "Storage layer offering ACID transactions and schema validation. Supports historical SCD Type 1/2 tracking.",
-      category: "de",
+      category: "primary",
       relations: ["Azure Databricks", "PySpark", "Azure Data Factory"]
     },
     {
-      name: "ADLS Gen2",
-      desc: "Highly scalable, secure object storage for hosting Bronze, Silver, and Gold layers of the Medallion lakehouse.",
-      category: "de",
-      relations: ["Azure Data Factory", "Azure Databricks", "Microsoft Fabric"]
+      name: "SQL",
+      desc: "Structured Query Language. Core engine queries for logical data transformations, profiling, and view aggregates.",
+      category: "primary",
+      relations: ["SQL Server", "PostgreSQL", "MySQL"]
+    },
+    {
+      name: "Python",
+      desc: "Primary backend language for automation scripts, data transformations, PySpark jobs, and RAG pipelines.",
+      category: "primary",
+      relations: ["PySpark", "Azure Databricks", "Git & GitHub"]
     },
     {
       name: "Microsoft Fabric",
       desc: "SaaS-based unified analytics ecosystem, merging storage (OneLake), compute (Synapse), and visual layers (Power BI).",
-      category: "de",
+      category: "primary",
       relations: ["ADLS Gen2", "Power BI", "Delta Lake"]
     },
     
-    // AI / GenAI
+    // SECONDARY STACK
     {
-      name: "Generative AI",
-      desc: "Core models and prompt systems used to automate content extraction and proposal generation.",
-      category: "ai",
-      relations: ["Azure OpenAI", "RAG", "Prompt Engineering"]
+      name: "Power BI",
+      desc: "BI dashboard reporting platform connected directly to Gold semantic star schemas via DirectQuery.",
+      category: "secondary",
+      relations: ["Microsoft Fabric", "Delta Lake"]
     },
     {
-      name: "Prompt Engineering",
-      desc: "Optimizing instructions and structure within LLM contexts to extract structured responses from RFP text blocks.",
-      category: "ai",
-      relations: ["Generative AI", "Azure OpenAI", "RAG"]
+      name: "ADLS Gen2",
+      desc: "Highly scalable, secure object storage for hosting Bronze, Silver, and Gold layers of the Medallion lakehouse.",
+      category: "secondary",
+      relations: ["Azure Data Factory", "Azure Databricks", "Microsoft Fabric"]
     },
+    {
+      name: "PostgreSQL",
+      desc: "Open-source SQL database. Acts as the core vector store utilizing extension indexes for RAG embeddings.",
+      category: "secondary",
+      relations: ["SQL", "RAG"]
+    },
+    {
+      name: "MySQL",
+      desc: "Relational database management system supporting structured transactional application schemas.",
+      category: "secondary",
+      relations: ["SQL"]
+    },
+    {
+      name: "SQL Server",
+      desc: "Relational database server hosting source operational tables replicated by ADF pipelines.",
+      category: "secondary",
+      relations: ["SQL", "Azure Data Factory"]
+    },
+    {
+      name: "Git & GitHub",
+      desc: "Distributed version control system and repository hosting platform for pipeline scripts and Continuous Integration.",
+      category: "secondary",
+      relations: ["Python"]
+    },
+
+    // AI & GENAI
     {
       name: "RAG",
       desc: "Retrieval-Augmented Generation. Architecture combining semantic document lookups with LLM prompts.",
       category: "ai",
-      relations: ["Azure OpenAI", "PostgreSQL", "pgvector"]
-    },
-    {
-      name: "NLP",
-      desc: "Natural Language Processing algorithms used for semantic chunking, keyword extraction, and document parsing.",
-      category: "ai",
-      relations: ["Generative AI", "RAG", "Azure OpenAI"]
+      relations: ["Azure OpenAI", "PostgreSQL", "NLP"]
     },
     {
       name: "Azure OpenAI",
       desc: "Secure deployment of GPT models and text-embedding algorithms inside the Azure cloud ecosystem.",
       category: "ai",
-      relations: ["RAG", "Generative AI", "Prompt Engineering"]
-    },
-
-    // Programming
-    {
-      name: "Python",
-      desc: "Primary backend language for automation scripts, data transformations, PySpark jobs, and RAG pipelines.",
-      category: "prog",
-      relations: ["PySpark", "Azure Databricks", "Git"]
+      relations: ["RAG", "Generative AI"]
     },
     {
-      name: "SQL",
-      desc: "Structured Query Language. Core engine queries for logical data transformations, profiling, and view aggregates.",
-      category: "prog",
-      relations: ["SQL Server", "PostgreSQL", "MySQL"]
+      name: "Generative AI",
+      desc: "Core LLM models and instruction frameworks used to automate proposal responses and context merges.",
+      category: "ai",
+      relations: ["Azure OpenAI", "RAG"]
     },
     {
-      name: "Java",
-      desc: "Object-oriented language used for enterprise runtimes and implementing algorithmic data structures.",
-      category: "prog",
-      relations: ["SQL", "Git"]
-    },
-
-    // Databases
-    {
-      name: "SQL Server",
-      desc: "Relational database server hosting source operational tables replicated by ADF pipelines.",
-      category: "tools", // grouped visual databases
-      relations: ["SQL", "Azure Data Factory"]
+      name: "NLP",
+      desc: "Natural Language Processing algorithms used for semantic chunking, keyword extraction, and document parsing.",
+      category: "ai",
+      relations: ["Generative AI", "RAG"]
     },
     {
-      name: "PostgreSQL",
-      desc: "Open-source SQL database. Acts as the core vector store utilizing extension indexes for RAG embeddings.",
-      category: "tools",
-      relations: ["SQL", "pgvector", "RAG"]
-    },
-    {
-      name: "MySQL",
-      desc: "Relational database management system supporting structured transactional application schemas.",
-      category: "tools",
-      relations: ["SQL"]
-    },
-
-    // Analytics
-    {
-      name: "Power BI",
-      desc: "BI dashboard reporting platform connected directly to Gold semantic star schemas via DirectQuery.",
-      category: "analytics",
-      relations: ["Microsoft Fabric", "Delta Lake"]
-    },
-    {
-      name: "HEX",
-      desc: "Collaborative SQL and Python notebook environment for advanced analytics and interactive data profiling.",
-      category: "analytics",
+      name: "Machine Learning",
+      desc: "Supervised and unsupervised models used for classification, predictive analysis, and regression tasks.",
+      category: "ai",
       relations: ["Python", "SQL"]
-    },
-
-    // Tools
-    {
-      name: "Git",
-      desc: "Distributed version control system for tracking source changes and orchestrating feature branches.",
-      category: "tools",
-      relations: ["GitHub", "Python"]
-    },
-    {
-      name: "GitHub",
-      desc: "Repository hosting platform managing pipeline scripts, infrastructure-as-code files, and continuous integrations.",
-      category: "tools",
-      relations: ["Git"]
-    },
-    {
-      name: "pgvector",
-      desc: "PostgreSQL vector similarity extension used to store 1536-dimensional OpenAI embeddings for cosine searches.",
-      category: "tools",
-      relations: ["PostgreSQL", "RAG", "Azure OpenAI"]
     }
   ];
 
-  // Group skills by categories
   const categories = [
-    { id: "de", label: "Data Engineering" },
-    { id: "ai", label: "AI & Generative AI" },
-    { id: "prog", label: "Programming & Code" },
-    { id: "analytics", label: "Analytics & BI" },
-    { id: "tools", label: "Databases & Tools" }
+    { id: "primary", label: "Primary Stack" },
+    { id: "secondary", label: "Secondary Stack" },
+    { id: "ai", label: "AI & GenAI Stack" }
   ];
 
   const getRelationsForActiveNode = () => {
@@ -197,22 +164,22 @@ export function TechUniverseSection() {
         </p>
       </div>
 
-      {/* Main Graph Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-10 items-stretch">
+      {/* Main Graph Grid (Prioritized 3-Column Layout) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10 items-stretch max-w-5xl mx-auto">
         {categories.map((cat, idx) => {
           const categoryNodes = skills.filter((s) => s.category === cat.id);
           
           return (
-            <AnimWrapper key={cat.id} variant="fade-up" delay={idx * 0.06} className="h-full">
+            <AnimWrapper key={cat.id} variant="fade-up" delay={idx * 0.08} className="h-full">
               <GlassCard
                 interactive={false}
-                className="p-5 h-full flex flex-col border-white/5 bg-white/[0.01]"
+                className="p-6 h-full flex flex-col border-white/5 bg-white/[0.01]"
               >
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-5 font-mono border-b border-white/5 pb-2 text-primary">
+                <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6 font-mono border-b border-white/5 pb-2 text-primary">
                   {cat.label}
                 </h4>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-wrap gap-2.5">
                   {categoryNodes.map((node) => {
                     const isActive = hoveredNode !== null && activeRelations.includes(node.name);
                     const isHoveredSelf = hoveredNode?.name === node.name;
@@ -230,7 +197,7 @@ export function TechUniverseSection() {
                             : isActive
                             ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/30 shadow-[0_0_8px_rgba(6,182,212,0.2)]"
                             : isAnyHovered
-                            ? "opacity-30 border-transparent text-muted-foreground/50"
+                            ? "opacity-35 border-transparent text-muted-foreground/40"
                             : "bg-white/[0.02] text-muted-foreground border-white/5 hover:border-white/20 hover:text-white"
                         )}
                       >

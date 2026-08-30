@@ -5,8 +5,9 @@ import { SectionContainer } from "../foundations/SectionContainer";
 import { SectionHeading } from "../foundations/SectionHeading";
 import { GlassCard } from "../foundations/GlassCard";
 import { AnimWrapper } from "../foundations/AnimWrapper";
+import { ThemeButton } from "../foundations/ThemeButton";
 import { cn } from "@/lib/utils";
-import { Database, FileText, ArrowRight, ShieldCheck, Cpu, Terminal, Sparkles, BarChart3, Binary, GitCommit } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 
 interface PipelineStage {
   id: string;
@@ -18,6 +19,8 @@ interface PipelineStage {
 export function ProjectsSection() {
   const [activeStarAirStage, setActiveStarAirStage] = useState<string>("BRONZE");
   const [activeRfpStage, setActiveRfpStage] = useState<string>("pgvector");
+  const [expandedStarAir, setExpandedStarAir] = useState<boolean>(false);
+  const [expandedRfp, setExpandedRfp] = useState<boolean>(false);
 
   const starAirStages: PipelineStage[] = [
     {
@@ -69,7 +72,7 @@ export function ProjectsSection() {
       id: "PyMuPDF",
       label: "PARSING",
       tech: "PyMuPDF Library",
-      desc: "Extracts textual contents, structure headers, and metadata tags from documents."
+      desc: "Extracts textual contents, structure headers, and metadata tags from files."
     },
     {
       id: "CHUNKING",
@@ -125,6 +128,21 @@ export function ProjectsSection() {
     "PostgreSQL", "pgvector", "Vector Embeddings", "PyMuPDF", "Antigravity"
   ];
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <SectionContainer id="projects">
       <SectionHeading title="What I've Built" subtitle="Projects Case Studies" />
@@ -179,7 +197,6 @@ export function ProjectsSection() {
 
                 {/* Horizontal flow line track */}
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3 z-10 relative">
-                  
                   {starAirStages.map((stage) => {
                     const isActive = activeStarAirStage === stage.id;
                     
@@ -223,6 +240,82 @@ export function ProjectsSection() {
                   })()}
                 </div>
 
+              </div>
+
+              {/* Case Study Details Expansion Area */}
+              {expandedStarAir && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 pt-6 border-t border-white/5 font-mono text-xs text-left">
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <span className="text-primary font-bold block uppercase mb-1">Problem</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Managing data scalability, consistency, and schema tracking across diverse tables within airline operational databases.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-primary font-bold block uppercase mb-1">Approach</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Designed an automated Medallion lakehouse architecture deploying raw Parquet landing files, clean Spark conformed tables, and relational analytics star schemas.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-primary font-bold block uppercase mb-1">Architecture Flow</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        SQL Server (Source) &rarr; ADF orchestrator &rarr; ADLS Gen2 (Bronze Raw) &rarr; Databricks PySpark transformation &rarr; Delta Lake (Silver conformed layers with SCD Type 1 & 2 history) &rarr; Gold analytical star schemas &rarr; Power BI DirectQuery reports.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <span className="text-primary font-bold block uppercase mb-1">Technologies</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        SQL Server, Azure Data Factory, ADLS Gen2, Azure Databricks, PySpark, Delta Lake, Power BI.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-primary font-bold block uppercase mb-1">My Contribution</span>
+                      <ul className="list-disc pl-4 text-muted-foreground leading-relaxed flex flex-col gap-1.5">
+                        <li>Ingested approximately 22 source transactional database tables.</li>
+                        <li>Performed data profiling to compile source-to-target mapping metadata.</li>
+                        <li>Constructed Conceptual, Logical, and Physical schema models.</li>
+                        <li>Configured ADF Copy pipelines and conformed Databricks PySpark validation transformations.</li>
+                        <li>Implemented Slowly Changing Dimensions (SCD Type 1 & 2) in Delta Lake.</li>
+                        <li>Programmed incremental processing logic, automated tests, and Power BI dashboards.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Expansion Action Buttons */}
+              <div className="flex flex-wrap gap-4 mt-2">
+                <ThemeButton
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setExpandedStarAir(!expandedStarAir)}
+                  className="gap-1.5 uppercase font-bold text-[10px]"
+                >
+                  {expandedStarAir ? (
+                    <>
+                      <ChevronUp className="size-3.5" />
+                      Collapse Details
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="size-3.5" />
+                      View Project Details
+                    </>
+                  )}
+                </ThemeButton>
+                <ThemeButton
+                  variant="outline"
+                  size="sm"
+                  onClick={() => scrollToSection("architecture")}
+                  className="gap-1.5 uppercase font-bold text-[10px]"
+                >
+                  Explore Architecture
+                  <ArrowRight className="size-3.5" />
+                </ThemeButton>
               </div>
 
             </div>
@@ -275,7 +368,7 @@ export function ProjectsSection() {
                   </span>
                 </div>
 
-                {/* Horizontal flow line track (split into grid to avoid overflow) */}
+                {/* Horizontal flow line track */}
                 <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-2 z-10 relative">
                   {rfpStages.map((stage) => {
                     const isActive = activeRfpStage === stage.id;
@@ -320,6 +413,81 @@ export function ProjectsSection() {
                   })()}
                 </div>
 
+              </div>
+
+              {/* Case Study Details Expansion Area */}
+              {expandedRfp && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 pt-6 border-t border-white/5 font-mono text-xs text-left">
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <span className="text-rose-400 font-bold block uppercase mb-1">Problem</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        RFP analysis and proposal preparation require repeated layout scans and manual context retrieval, increasing time-to-delivery.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-rose-400 font-bold block uppercase mb-1">Approach</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Designed a Retrieval-Augmented Generation (RAG) assistant that indexes proposal documents into semantic vector fragments for quick context alignment.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-rose-400 font-bold block uppercase mb-1">Architecture Flow</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        RFP File &rarr; PyMuPDF text parser &rarr; semantic token chunking &rarr; OpenAI Embeddings API &rarr; PostgreSQL + pgvector storage &rarr; Cosine vector similarity query &rarr; Context Merger prompt &rarr; GPT-4o synthesis &rarr; Next.js frontend with cited page sources.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <span className="text-rose-400 font-bold block uppercase mb-1">Technologies</span>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Python, FastAPI, Next.js, Azure OpenAI, PostgreSQL, pgvector, PyMuPDF, RAG, LangChain.
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-rose-400 font-bold block uppercase mb-1">My Contribution</span>
+                      <ul className="list-disc pl-4 text-muted-foreground leading-relaxed flex flex-col gap-1.5">
+                        <li>Developed PDF parsing and text layout extraction using PyMuPDF.</li>
+                        <li>Configured semantic text splitting preserving token page numbers and source metadata.</li>
+                        <li>Programmed connection with Azure OpenAI embedding API to calculate 1536-dimensional weights.</li>
+                        <li>Set up pgvector storage indices in PostgreSQL database for vector calculations.</li>
+                        <li>Engineered the FastAPI backend endpoints merging matched contexts into GPT prompt windows.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Expansion Action Buttons */}
+              <div className="flex flex-wrap gap-4 mt-2">
+                <ThemeButton
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setExpandedRfp(!expandedRfp)}
+                  className="gap-1.5 uppercase font-bold text-[10px]"
+                >
+                  {expandedRfp ? (
+                    <>
+                      <ChevronUp className="size-3.5" />
+                      Collapse Details
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="size-3.5" />
+                      View Project Details
+                    </>
+                  )}
+                </ThemeButton>
+                <ThemeButton
+                  variant="outline"
+                  size="sm"
+                  onClick={() => scrollToSection("architecture")}
+                  className="gap-1.5 uppercase font-bold text-[10px]"
+                >
+                  Explore Architecture
+                  <ArrowRight className="size-3.5" />
+                </ThemeButton>
               </div>
 
             </div>

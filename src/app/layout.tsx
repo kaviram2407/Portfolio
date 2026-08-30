@@ -16,8 +16,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Personal portfolio website with high-performance animations and advanced architecture layouts.",
+  metadataBase: new URL("https://kaviram.vercel.app"),
+  title: "Kaviram Paramasivan | Data Engineer",
+  description: "Data Engineer focused on Azure, Databricks, PySpark, data platforms and AI/GenAI applications.",
+  robots: "index, follow",
+  openGraph: {
+    title: "Kaviram Paramasivan | Data Engineer",
+    description: "Data Engineer focused on Azure, Databricks, PySpark, data platforms and AI/GenAI applications.",
+    type: "website",
+    locale: "en_US",
+    url: "https://kaviram.vercel.app",
+    siteName: "Kaviram Paramasivan Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kaviram Paramasivan | Data Engineer",
+    description: "Data Engineer focused on Azure, Databricks, PySpark, data platforms and AI/GenAI applications.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

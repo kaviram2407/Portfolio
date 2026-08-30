@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kaviram Paramasivan — Portfolio
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Personal portfolio website designed as an interactive Data Engineering Command Center, detailing conformed data pipelines, cloud data platforms, system architecture blueprints, and Retrieval-Augmented Generation (RAG) assistant pipelines.
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- GSAP
+- Three.js / Canvas
+- Lucide React
+
+## Featured Projects
+
+### StarAir Airline Data Platform
+An aviation-focused Medallion lakehouse processing airline transactions, flight profiles, sales, and carrier logs. Orchestrated with Azure Data Factory and Databricks PySpark to ingest 22 tables, enforce data quality rules, and implement historical SCD Type 1 & 2 tracking into Gold dimensional semantic star schemas connected to Power BI DirectQuery.
+
+### AI RFP / Proposal Assistant
+A self-initiated Retrieval-Augmented Generation (RAG) assistant designed to parse layouts and metadata from massive proposal PDFs using PyMuPDF, calculate 1536-dimensional embeddings with Azure OpenAI, store and index vectors using PostgreSQL and pgvector, and generate sourced citations through LLM context merges.
+
+## Key Engineering Areas
+
+- Data Engineering
+- Azure
+- Databricks
+- PySpark
+- Delta Lake
+- Microsoft Fabric
+- SQL
+- Python
+- AI / GenAI
+- RAG
+
+## Local Development
+
+Ensure dependencies are installed and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Compile the Next.js production build using Webpack:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build -- --webpack
+```

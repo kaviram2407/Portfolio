@@ -15,9 +15,15 @@ export function Footer() {
   return (
     <footer className="w-full py-12 border-t border-white/5 bg-[#05050a] relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <p className="text-xs font-medium text-muted-foreground">
-            © {new Date().getFullYear()} Portfolio. Built with Next.js, Tailwind v4, & Framer Motion.
+        <div className="flex flex-col gap-1 text-left font-mono">
+          <span className="text-xs font-bold text-white block uppercase tracking-wide">
+            Kaviram Paramasivan
+          </span>
+          <span className="text-[10px] text-muted-foreground block uppercase">
+            Data Engineer (Associate) &bull; Data Engineering &bull; Cloud &bull; AI
+          </span>
+          <p className="text-[9px] text-muted-foreground/50 mt-1">
+            © 2026 Kaviram Paramasivan
           </p>
         </div>
         
