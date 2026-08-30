@@ -47,6 +47,7 @@
   --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-spin-slow: spin 25s linear infinite;
   --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
+  --animate-orbit: orbit var(--orbit-duration, 25s) linear infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -59,6 +60,10 @@
   @keyframes glow-pulse {
     0%, 100% { opacity: 0.8; box-shadow: 0 0 15px var(--glow-color, rgba(139, 92, 246, 0.15)); }
     50% { opacity: 0.4; box-shadow: 0 0 5px var(--glow-color, rgba(139, 92, 246, 0.05)); }
+  }
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(var(--orbit-distance, 110px)) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(var(--orbit-distance, 110px)) rotate(-360deg); }
   }
 }
 
@@ -124,6 +129,10 @@
   background: linear-gradient(135deg, oklch(0.92 0.08 85) 0%, oklch(0.78 0.12 75) 50%, oklch(0.62 0.16 65) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@utility animate-orbit {
+  animation: orbit var(--orbit-duration, 25s) linear infinite;
 }
 
 @utility glass-panel {
