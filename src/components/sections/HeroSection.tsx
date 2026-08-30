@@ -290,29 +290,29 @@ export function HeroSection() {
         {/* Left Column: Hero Details */}
         <div className="lg:col-span-6 flex flex-col items-start text-left">
 
-          <AnimWrapper variant="fade-up" duration={0.8}>
-            <div className="flex items-center gap-2 mb-4 bg-white/5 border border-white/5 px-3.5 py-1.5 rounded-xl font-mono text-[10px] text-cyan-400">
-              <span className="size-2 rounded-full bg-cyan-400 animate-ping shrink-0" />
-              <span className="text-white/60">SYS_STATUS:</span>
-              <span className="font-semibold uppercase tracking-wider">INITIALIZING DATA ENGINEER...</span>
-              <span className="text-white/20">|</span>
-              <span className="text-white/50">{sysTime}</span>
-            </div>
-          </AnimWrapper>
-
           <AnimWrapper variant="fade-up" duration={0.8} delay={0.15}>
-            <h1 className="text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-white mb-4 leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-white mb-3 leading-[1.1]">
               Kaviram Sudharajanainar Paramasivan
             </h1>
-            <div className="text-[11px] font-bold font-mono text-cyan-400 uppercase tracking-widest mb-6">
-              Data Engineer (Associate) &bull; Data Engineering &bull; Azure &bull; AI / GenAI
+            <div className="text-[11px] font-bold font-mono text-cyan-400 uppercase tracking-widest mb-1.5">
+              Data Engineer (Associate) &bull; Systech Solutions, Inc.
+            </div>
+            <div className="text-[10px] font-semibold font-mono text-muted-foreground uppercase tracking-wider mb-6">
+              Chennai, India
             </div>
           </AnimWrapper>
 
-          <AnimWrapper variant="fade-up" duration={0.8} delay={0.3}>
+          <AnimWrapper variant="fade-up" duration={0.8} delay={0.25}>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+              Engineering Data. <br />
+              <span className="text-gradient-primary">Building Intelligence.</span>
+            </h2>
+          </AnimWrapper>
+
+          <AnimWrapper variant="fade-up" duration={0.8} delay={0.35}>
             <div className="border-l-2 border-primary/20 pl-4 mb-8 max-w-xl">
               <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                Building scalable data pipelines, cloud data platforms and intelligent AI applications.
+                Building reliable data pipelines and cloud data solutions with modern data engineering technologies, while exploring AI/GenAI applications.
               </p>
             </div>
           </AnimWrapper>
@@ -328,15 +328,6 @@ export function HeroSection() {
               >
                 Explore My Work
               </ThemeButton>
-              <a href="/resume.pdf" download="Kaviram_Resume.pdf">
-                <ThemeButton
-                  variant="outline"
-                  size="lg"
-                  className="gap-1.5 cursor-pointer font-bold uppercase tracking-wider text-xs transition-transform hover:-translate-y-0.5"
-                >
-                  Download Resume
-                </ThemeButton>
-              </a>
               <ThemeButton
                 variant="outline"
                 size="lg"
@@ -351,19 +342,19 @@ export function HeroSection() {
           <AnimWrapper variant="fade-up" duration={0.8} delay={0.55}>
             <div className="grid grid-cols-3 gap-4 border-t border-white/5 pt-6 mt-8 w-full max-w-lg font-mono">
               <div>
-                <span className="text-[9px] text-muted-foreground block uppercase mb-1">Education</span>
-                <span className="text-[11px] font-bold text-white block uppercase">M.Tech Integrated</span>
-                <span className="text-[9px] text-cyan-400">CGPA 8.72</span>
+                <span className="text-[9px] text-muted-foreground block uppercase mb-1">Data Engineering</span>
+                <span className="text-[11px] font-bold text-white block uppercase">Azure Databricks</span>
+                <span className="text-[9px] text-cyan-400 font-medium">PySpark &bull; SQL</span>
               </div>
               <div>
-                <span className="text-[9px] text-muted-foreground block uppercase mb-1">Engineering</span>
-                <span className="text-[11px] font-bold text-white block uppercase">Azure &bull; Databricks</span>
-                <span className="text-[9px] text-cyan-400">PySpark</span>
+                <span className="text-[9px] text-muted-foreground block uppercase mb-1">Cloud Data</span>
+                <span className="text-[11px] font-bold text-white block uppercase">Microsoft Fabric</span>
+                <span className="text-[9px] text-cyan-400 font-medium">Azure</span>
               </div>
               <div>
                 <span className="text-[9px] text-muted-foreground block uppercase mb-1">AI / GenAI</span>
                 <span className="text-[11px] font-bold text-white block uppercase">RAG System</span>
-                <span className="text-[9px] text-cyan-400">Azure OpenAI</span>
+                <span className="text-[9px] text-cyan-400 font-medium">Azure OpenAI</span>
               </div>
             </div>
           </AnimWrapper>

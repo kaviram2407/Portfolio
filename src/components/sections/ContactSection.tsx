@@ -50,7 +50,7 @@ export function ContactSection() {
                 </h3>
                 
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-8">
-                  Open to opportunities involving data engineering, cloud data platforms and AI-powered applications.
+                  Open to opportunities in data engineering, cloud data platforms and AI/GenAI applications.
                 </p>
 
                 <div className="flex flex-col gap-3.5 mb-8">

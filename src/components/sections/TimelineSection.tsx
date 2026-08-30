@@ -17,32 +17,32 @@ export function TimelineSection() {
     {
       step: "01",
       title: "Source Analysis",
-      desc: "Perform data profiling and compile source-to-target mapping logic specifying datatype conformance."
+      desc: "Perform data profiling, analyze schemas, and compile source-to-target mapping logic specifying datatype conformance rules."
     },
     {
       step: "02",
       title: "Data Modeling",
-      desc: "Build physical, logical, and conceptual models matching business query performance criteria."
+      desc: "Construct conceptual, logical, and physical models (star-schemas) matching reporting search criteria."
     },
     {
       step: "03",
       title: "Ingestion Pipeline",
-      desc: "Configure ADF copy activities and templates to replicate transactional source tables into Bronze folders."
+      desc: "Configure ADF copy activities and templates to replicate operational source tables into Bronze Parquet landing folders."
     },
     {
       step: "04",
       title: "Transformation Layers",
-      desc: "Write PySpark scripts in Databricks to clean values, resolve keys, and compute conformed Silver Delta Lake tables."
+      desc: "Write PySpark scripts in Databricks to clean values, resolve keys, and compute conformed Silver Delta Lake tables with SCD Type 1 & 2 history."
     },
     {
       step: "05",
       title: "Data Quality Assurance",
-      desc: "Enforce null constraints, run integrity checks, and write automated tests verifying ingestion counts."
+      desc: "Enforce null constraints, run integrity checks, and write automated tests verifying incremental ingestion counts."
     },
     {
       step: "06",
       title: "Analytics Integration",
-      desc: "Build Gold star-schemas, handle SCD history, and configure DirectQuery semantic models in Power BI."
+      desc: "Build Gold relational layers, configure DirectQuery semantic models, and design interactive dashboards in Power BI."
     }
   ];
 
@@ -53,12 +53,12 @@ export function TimelineSection() {
       {/* Main Experience Wrapper */}
       <div className="max-w-4xl mx-auto w-full">
         
-        {/* Banner Block for Systech Role */}
-        <AnimWrapper variant="fade-up" className="mb-12">
+        {/* Banner Block for Systech Role: Data Engineer (Associate) */}
+        <AnimWrapper variant="fade-up" className="mb-10">
           <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0914]/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <span className="text-[10px] font-bold font-mono text-primary uppercase">
-                Present &bull; Chennai, India
+              <span className="text-[10px] font-bold font-mono text-cyan-400 uppercase tracking-widest">
+                Jul 2026 – Present &bull; Chennai, India
               </span>
               <h3 className="text-xl font-bold text-white tracking-wide mt-1">
                 Data Engineer (Associate)
@@ -77,7 +77,7 @@ export function TimelineSection() {
 
         {/* 6-Stage Grid Progression */}
         <h4 className="text-xs font-bold text-white uppercase tracking-widest font-mono text-center mb-8">
-          Engineering Progression Stages
+          Engineering Progression Workflow (Associate Role)
         </h4>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 mb-16">
@@ -105,6 +105,31 @@ export function TimelineSection() {
           ))}
         </div>
 
+        {/* Trainee Banner Block */}
+        <AnimWrapper variant="fade-up" className="mb-16">
+          <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0914]/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span className="text-[10px] font-bold font-mono text-cyan-400 uppercase tracking-widest">
+                Jan 2026 – Jul 2026 &bull; Chennai, India
+              </span>
+              <h3 className="text-xl font-bold text-white tracking-wide mt-1">
+                Trainee
+              </h3>
+              <h4 className="text-sm font-semibold text-muted-foreground font-mono uppercase tracking-wide">
+                Systech Solutions, Inc.
+              </h4>
+            </div>
+            <div className="text-left md:text-right shrink-0">
+              <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-widest bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase font-mono">
+                Bootcamp Training
+              </span>
+            </div>
+          </div>
+          <div className="border-l-2 border-primary/20 pl-4 mt-4 font-mono text-xs text-muted-foreground leading-relaxed">
+            Completed Data Integration (DI) certification bootcamp training at Systech Solutions. Built foundational competencies in Microsoft SQL Server database design, Python application scripting, Azure Data Factory ETL pipeline templates, Azure Databricks PySpark transformations, and Power BI dashboard delivery.
+          </div>
+        </AnimWrapper>
+
         {/* Previous Internships Timeline */}
         <h4 className="text-xs font-bold text-white uppercase tracking-widest font-mono text-center mb-8">
           Previous Internships
@@ -115,7 +140,7 @@ export function TimelineSection() {
           <AnimWrapper variant="fade-up" delay={0.1}>
             <div className="relative">
               <div className="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-[#27263b] border-2 border-background" />
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1.5 text-left">
                 <div>
                   <span className="text-[9px] font-bold font-mono text-primary uppercase">
                     2024 &bull; Chennai, India
@@ -134,7 +159,7 @@ export function TimelineSection() {
           <AnimWrapper variant="fade-up" delay={0.2}>
             <div className="relative">
               <div className="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-[#27263b] border-2 border-background" />
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1.5 text-left">
                 <div>
                   <span className="text-[9px] font-bold font-mono text-primary uppercase">
                     2024 &bull; Chennai, India

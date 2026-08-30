@@ -125,7 +125,7 @@ export function ProjectsSection() {
 
   const rfpTech = [
     "Python", "FastAPI", "Next.js", "Azure OpenAI", "RAG", 
-    "PostgreSQL", "pgvector", "Vector Embeddings", "PyMuPDF", "Antigravity"
+    "PostgreSQL", "pgvector", "Vector Embeddings", "PyMuPDF"
   ];
 
   const scrollToSection = (id: string) => {
@@ -158,7 +158,7 @@ export function ProjectsSection() {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <span className="text-[10px] font-bold font-mono tracking-widest bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3 py-1 rounded-full uppercase">
-                    Data Engineering Case Study
+                    Simulation / Case Study
                   </span>
                   <h3 className="text-2xl font-bold text-white tracking-wide mt-2">
                     StarAir Airline Data Platform
@@ -249,13 +249,13 @@ export function ProjectsSection() {
                     <div>
                       <span className="text-primary font-bold block uppercase mb-1">Problem</span>
                       <p className="text-muted-foreground leading-relaxed">
-                        Managing data scalability, consistency, and schema tracking across diverse tables within airline operational databases.
+                        Managing transaction table scale and historical schema tracking across operational aviation datasets, requiring schema conformance and automated ingestion.
                       </p>
                     </div>
                     <div>
                       <span className="text-primary font-bold block uppercase mb-1">Approach</span>
                       <p className="text-muted-foreground leading-relaxed">
-                        Designed an automated Medallion lakehouse architecture deploying raw Parquet landing files, clean Spark conformed tables, and relational analytics star schemas.
+                        Designed a standardized three-tier cloud Medallion database layout to process transaction events incrementally with type conformance.
                       </p>
                     </div>
                     <div>
@@ -303,7 +303,7 @@ export function ProjectsSection() {
                   ) : (
                     <>
                       <ChevronDown className="size-3.5" />
-                      View Project Details
+                      View Case Study
                     </>
                   )}
                 </ThemeButton>
@@ -331,7 +331,7 @@ export function ProjectsSection() {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-widest bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase font-mono">
-                    Self-Initiated AI Application
+                    Self-Initiated Project &bull; In Development
                   </span>
                   <h3 className="text-2xl font-bold text-white tracking-wide mt-2">
                     AI RFP / Proposal Assistant
@@ -349,7 +349,7 @@ export function ProjectsSection() {
               {/* Case Study Details */}
               <div className="border-l-2 border-primary/20 pl-4 my-2">
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  An AI application designed to parse and index massive PDF proposal/RFP documents. It breaks documents down into semantic tokens, calculates vectors using OpenAI, indexes them in PostgreSQL using pgvector, and coordinates context synthesis with LLMs to generate answers mapping directly back to original page sources.
+                  An AI-powered RFP assistant currently under development, exploring document retrieval, vector search and grounded response generation.
                 </p>
               </div>
 
@@ -428,7 +428,7 @@ export function ProjectsSection() {
                     <div>
                       <span className="text-rose-400 font-bold block uppercase mb-1">Approach</span>
                       <p className="text-muted-foreground leading-relaxed">
-                        Designed a Retrieval-Augmented Generation (RAG) assistant that indexes proposal documents into semantic vector fragments for quick context alignment.
+                        Exploring the development of a Retrieval-Augmented Generation (RAG) assistant that indexes proposal documents into semantic vector fragments for quick context alignment.
                       </p>
                     </div>
                     <div>
@@ -442,7 +442,7 @@ export function ProjectsSection() {
                     <div>
                       <span className="text-rose-400 font-bold block uppercase mb-1">Technologies</span>
                       <p className="text-muted-foreground leading-relaxed">
-                        Python, FastAPI, Next.js, Azure OpenAI, PostgreSQL, pgvector, PyMuPDF, RAG, LangChain.
+                        Python, FastAPI, Next.js, Azure OpenAI, PostgreSQL, pgvector, PyMuPDF, RAG, Generative AI.
                       </p>
                     </div>
                     <div>
@@ -475,7 +475,7 @@ export function ProjectsSection() {
                   ) : (
                     <>
                       <ChevronDown className="size-3.5" />
-                      View Project Details
+                      View Case Study
                     </>
                   )}
                 </ThemeButton>

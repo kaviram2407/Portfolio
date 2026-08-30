@@ -99,15 +99,9 @@ export function AboutSection() {
               <div className="rounded-xl overflow-hidden bg-[#07060c]/80 flex justify-center items-center relative z-10 border border-white/5">
                 <img
                   src="/kaviram_about.png"
-                  alt="Kaviram Sudharajanainar Coder Portrait"
+                  alt="Kaviram Sudharajanainar Portrait"
                   className="w-full h-auto object-contain filter drop-shadow-[0_0_12px_rgba(139,92,246,0.25)] transition-transform duration-500 group-hover:scale-[1.02]"
                 />
-              </div>
-
-              {/* Technical description caption */}
-              <div className="mt-4 flex justify-between items-center px-1 font-mono text-[9px] text-muted-foreground select-none">
-                <span>SYS_ASSET: kaviram_about.png</span>
-                <span className="text-cyan-400 font-semibold animate-pulse">[READY]</span>
               </div>
             </GlassCard>
           </AnimWrapper>
@@ -119,7 +113,7 @@ export function AboutSection() {
             Professional Summary
           </h3>
           <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-8 border-l-2 border-primary/20 pl-4">
-            Integrated M.Tech in Computer Science and Engineering graduate currently working as a Data Engineer (Associate) at Systech Solutions, Inc. Focused on building and optimizing end-to-end data pipelines, designing scalable cloud data platforms using Azure and Databricks, and implementing secure vector retrieval architectures for Generative AI applications.
+            I am a Data Engineer (Associate) at Systech Solutions, focused on building reliable data pipelines, transforming data using cloud-based platforms, and working with modern data engineering technologies. My work spans data ingestion, transformation, data quality, dimensional modeling, analytics, and emerging AI/GenAI applications.
           </p>
 
           <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono mb-6">

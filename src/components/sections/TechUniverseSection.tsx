@@ -18,62 +18,68 @@ export function TechUniverseSection() {
   const [hoveredNode, setHoveredNode] = useState<SkillNode | null>(null);
 
   const skills: SkillNode[] = [
-    // PRIMARY STACK
+    // PRIMARY STACK (Top 5 Technologies)
     {
       name: "Azure Databricks",
-      desc: "Managed Apache Spark analytics platform used for scalable conformed data transformations and Delta table computations.",
+      desc: "Managed Apache Spark analytics platform used for scalable data transformations, schema modeling, and Delta calculations.",
       category: "primary",
-      relations: ["PySpark", "Delta Lake", "Python"]
-    },
-    {
-      name: "Azure Data Factory",
-      desc: "Cloud-scale serverless ETL and orchestration tool for importing source transaction tables into the Bronze landing layer.",
-      category: "primary",
-      relations: ["Delta Lake", "SQL Server"]
+      relations: ["PySpark", "Python", "SQL"]
     },
     {
       name: "PySpark",
-      desc: "Python API for Apache Spark. Utilized for scalable, conformed cleansing, transformations, and SCD calculations.",
+      desc: "Python API for Apache Spark. Utilized for scalable conformed transformations, data cleaning, and SCD tracking.",
       category: "primary",
-      relations: ["Azure Databricks", "Python", "Delta Lake"]
-    },
-    {
-      name: "Delta Lake",
-      desc: "Storage layer offering ACID transactions and schema validation. Supports historical SCD Type 1/2 tracking.",
-      category: "primary",
-      relations: ["Azure Databricks", "PySpark", "Azure Data Factory"]
-    },
-    {
-      name: "SQL",
-      desc: "Structured Query Language. Core engine queries for logical data transformations, profiling, and view aggregates.",
-      category: "primary",
-      relations: ["SQL Server", "PostgreSQL", "MySQL"]
-    },
-    {
-      name: "Python",
-      desc: "Primary backend language for automation scripts, data transformations, PySpark jobs, and RAG pipelines.",
-      category: "primary",
-      relations: ["PySpark", "Azure Databricks", "Git & GitHub"]
+      relations: ["Azure Databricks", "Python"]
     },
     {
       name: "Microsoft Fabric",
       desc: "SaaS-based unified analytics ecosystem, merging storage (OneLake), compute (Synapse), and visual layers (Power BI).",
       category: "primary",
-      relations: ["ADLS Gen2", "Power BI", "Delta Lake"]
+      relations: ["Power BI", "ADLS Gen2"]
+    },
+    {
+      name: "SQL",
+      desc: "Structured Query Language. Core engine queries for logical data transformations, profiling, and database models.",
+      category: "primary",
+      relations: ["SQL Server", "PostgreSQL", "MySQL"]
+    },
+    {
+      name: "Python",
+      desc: "Primary language for automation, data transformations, PySpark jobs, and RAG document parsing scripts.",
+      category: "primary",
+      relations: ["PySpark", "Azure Databricks", "Git", "GitHub"]
     },
     
     // SECONDARY STACK
     {
-      name: "Power BI",
-      desc: "BI dashboard reporting platform connected directly to Gold semantic star schemas via DirectQuery.",
+      name: "Azure Data Factory",
+      desc: "Cloud-scale serverless ETL and orchestration tool for importing source transaction tables into landing folders.",
       category: "secondary",
-      relations: ["Microsoft Fabric", "Delta Lake"]
+      relations: ["SQL Server", "ADLS Gen2"]
+    },
+    {
+      name: "Delta Lake",
+      desc: "Storage layer offering ACID transactions and schema validation. Supports historical SCD Type 1 & 2 history logs.",
+      category: "secondary",
+      relations: ["Azure Databricks", "PySpark"]
     },
     {
       name: "ADLS Gen2",
-      desc: "Highly scalable, secure object storage for hosting Bronze, Silver, and Gold layers of the Medallion lakehouse.",
+      desc: "Highly scalable object storage for hosting Bronze, Silver, and Gold conformed layers of the lakehouse.",
       category: "secondary",
       relations: ["Azure Data Factory", "Azure Databricks", "Microsoft Fabric"]
+    },
+    {
+      name: "Power BI",
+      desc: "BI dashboard reporting platform connected directly to Gold semantic star schemas via DirectQuery.",
+      category: "secondary",
+      relations: ["Microsoft Fabric"]
+    },
+    {
+      name: "SQL Server",
+      desc: "Relational database server hosting source operational tables replicated by ADF copy activities.",
+      category: "secondary",
+      relations: ["SQL", "Azure Data Factory"]
     },
     {
       name: "PostgreSQL",
@@ -88,16 +94,16 @@ export function TechUniverseSection() {
       relations: ["SQL"]
     },
     {
-      name: "SQL Server",
-      desc: "Relational database server hosting source operational tables replicated by ADF pipelines.",
+      name: "Git",
+      desc: "Distributed version control system for tracking source code changes and branch history.",
       category: "secondary",
-      relations: ["SQL", "Azure Data Factory"]
+      relations: ["GitHub", "Python"]
     },
     {
-      name: "Git & GitHub",
-      desc: "Distributed version control system and repository hosting platform for pipeline scripts and Continuous Integration.",
+      name: "GitHub",
+      desc: "Web-based hosting service for Git repositories, facilitating version control and collaborative pipelines.",
       category: "secondary",
-      relations: ["Python"]
+      relations: ["Git", "Python"]
     },
 
     // AI & GENAI
@@ -105,13 +111,13 @@ export function TechUniverseSection() {
       name: "RAG",
       desc: "Retrieval-Augmented Generation. Architecture combining semantic document lookups with LLM prompts.",
       category: "ai",
-      relations: ["Azure OpenAI", "PostgreSQL", "NLP"]
+      relations: ["Azure OpenAI", "PostgreSQL", "NLP", "Embeddings"]
     },
     {
       name: "Azure OpenAI",
       desc: "Secure deployment of GPT models and text-embedding algorithms inside the Azure cloud ecosystem.",
       category: "ai",
-      relations: ["RAG", "Generative AI"]
+      relations: ["RAG", "Generative AI", "Embeddings"]
     },
     {
       name: "Generative AI",
@@ -130,6 +136,12 @@ export function TechUniverseSection() {
       desc: "Supervised and unsupervised models used for classification, predictive analysis, and regression tasks.",
       category: "ai",
       relations: ["Python", "SQL"]
+    },
+    {
+      name: "Embeddings",
+      desc: "Mathematical representation of text segments in high-dimensional vector space, mapping semantic similarities.",
+      category: "ai",
+      relations: ["Azure OpenAI", "RAG"]
     }
   ];
 
