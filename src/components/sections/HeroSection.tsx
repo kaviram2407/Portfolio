@@ -285,13 +285,13 @@ export function HeroSection() {
       <div className="absolute inset-0 pointer-events-none opacity-[0.18] bg-grid-pattern z-0" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-primary/10 rounded-full blur-[130px] pointer-events-none z-0" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-center relative z-10">
 
         {/* Left Column: Hero Details */}
-        <div className="lg:col-span-6 flex flex-col items-start text-left">
+        <div className="col-span-1 md:col-span-2 lg:col-span-6 flex flex-col items-start text-left">
 
           <AnimWrapper variant="fade-up" duration={0.8} delay={0.15}>
-            <h1 className="text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-white mb-3 leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-extrabold tracking-tight text-white mb-3 leading-[1.1] break-words w-full">
               Kaviram Sudharajanainar Paramasivan
             </h1>
             <div className="text-[11px] font-bold font-mono text-cyan-400 uppercase tracking-widest mb-1.5">
@@ -340,7 +340,7 @@ export function HeroSection() {
           </AnimWrapper>
 
           <AnimWrapper variant="fade-up" duration={0.8} delay={0.55}>
-            <div className="grid grid-cols-3 gap-4 border-t border-white/5 pt-6 mt-8 w-full max-w-lg font-mono">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-white/5 pt-6 mt-8 w-full max-w-lg font-mono">
               <div>
                 <span className="text-[9px] text-muted-foreground block uppercase mb-1">Data Engineering</span>
                 <span className="text-[11px] font-bold text-white block uppercase">Azure Databricks</span>
@@ -361,7 +361,7 @@ export function HeroSection() {
         </div>
 
         {/* Middle Column: Clean Portrait Cutout (No overlay on other visuals) */}
-        <div className="lg:col-span-3 col-span-12 w-full h-[320px] md:h-[420px] relative flex items-end justify-center rounded-2xl border border-white/5 bg-[#05050a]/10 overflow-hidden">
+        <div className="col-span-1 md:col-span-1 lg:col-span-3 w-full h-[260px] sm:h-[320px] md:h-[420px] relative flex items-end justify-center rounded-2xl border border-white/5 bg-[#05050a]/10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
           <div
             style={{
@@ -379,7 +379,7 @@ export function HeroSection() {
         </div>
 
         {/* Right Column: Live Data Pipeline Canvas (No overlay on other visuals) */}
-        <div className="lg:col-span-3 col-span-12 w-full h-[320px] md:h-[420px] relative flex items-center justify-center rounded-2xl border border-white/5 bg-[#05050a]/10 overflow-hidden">
+        <div className="col-span-1 md:col-span-1 lg:col-span-3 w-full h-[260px] sm:h-[320px] md:h-[420px] relative flex items-center justify-center rounded-2xl border border-white/5 bg-[#05050a]/10 overflow-hidden">
           <div
             style={{
               transform: `translate(${parallax.x * 3}px, ${parallax.y * 3}px)`,
