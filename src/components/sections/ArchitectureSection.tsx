@@ -22,90 +22,90 @@ export function ArchitectureSection() {
 
   const starAirNodes: ArchNode[] = [
     {
-      name: "Transactional Source",
-      purpose: "Host flight bookings, airport logs, and sales details",
-      tech: "SQL Server (On-Premises)",
+      name: "On-Premises Database",
+      purpose: "Source transaction tables capturing flight paths, sales, airport codes, and carrier details.",
+      tech: "Microsoft SQL Server",
       icon: <Database className="size-5 text-cyan-400" />
     },
     {
-      name: "ETL Ingestion Engine",
-      purpose: "Orchestrate scheduled pipelines to replicate raw source tables",
+      name: "Ingestion Orchestrator",
+      purpose: "Schedules copy pipelines to replicate raw tables into ADLS Gen2 landing zones.",
       tech: "Azure Data Factory",
       icon: <Sparkles className="size-5 text-violet-400" />
     },
     {
-      name: "Medallion Bronze Storage",
-      purpose: "Store raw schema-neutral history logs",
-      tech: "ADLS Gen2 / Parquet",
+      name: "Bronze raw landing",
+      purpose: "Stores raw history files in Parquet/JSON formats with schema logs preserved.",
+      tech: "ADLS Gen2 Storage",
       icon: <Binary className="size-5 text-amber-500" />
     },
     {
-      name: "Cleansing & Conformance",
-      purpose: "Deduplicate keys, enforce datatypes, validate quality checks",
+      name: "Cleansing Spark Compute",
+      purpose: "Cleanses values, validates schemas, enforces null constraints, and deduplicates transaction keys.",
       tech: "Azure Databricks / PySpark",
       icon: <Terminal className="size-5 text-primary" />
     },
     {
-      name: "Medallion Silver Tables",
-      purpose: "Provide clean queryable delta tables with history",
-      tech: "Delta Lake / ACID Compliant",
+      name: "Silver Delta Tables",
+      purpose: "ACID conformed tables. Handles Slowly Changing Dimensions (SCD Type 1 & 2) history.",
+      tech: "Delta Lake Storage",
       icon: <GitCommit className="size-5 text-violet-400" />
     },
     {
-      name: "Gold Dimensional Models",
-      purpose: "Aggregate dimensional star-schemas and flight business metrics",
-      tech: "Azure Databricks / Gold Layer",
+      name: "Gold Dimensional Aggs",
+      purpose: "Aggregate dimensional star-schemas built for business reports and analytics models.",
+      tech: "Azure Databricks / Spark SQL",
       icon: <Sparkles className="size-5 text-emerald-400" />
     },
     {
-      name: "Analytics & BI reporting",
-      purpose: "Deliver carrier performance and uplift dashboard reports",
-      tech: "Power BI / DirectQuery",
+      name: "Business Dashboarding",
+      purpose: "DirectQuery semantic layers tracking flight passenger metrics and carrier performance.",
+      tech: "Power BI DirectQuery",
       icon: <BarChart3 className="size-5 text-amber-400" />
     }
   ];
 
   const rfpNodes: ArchNode[] = [
     {
-      name: "RFP Documents",
-      purpose: "Client requirements, terms, and scope statements source",
-      tech: "Unstructured PDF / Word Docs",
+      name: "RFP Document Sources",
+      purpose: "Client requirements, terms, and scope statements source.",
+      tech: "Unstructured PDF / Word Files",
       icon: <FileText className="size-5 text-rose-400" />
     },
     {
-      name: "Document Processing",
-      purpose: "Extract text from PDFs and split into semantic tokens",
-      tech: "PyMuPDF & LangChain Chunking",
+      name: "Document Parsing",
+      purpose: "Extracts textual contents, structure headers, and metadata tags from files.",
+      tech: "PyMuPDF Library",
       icon: <Terminal className="size-5 text-cyan-400" />
     },
     {
-      name: "Embeddings Generator",
-      purpose: "Calculate dense vector weights for chunk semantics",
-      tech: "Azure OpenAI / text-embedding-3",
+      name: "Embedding Generator",
+      purpose: "Calculates dense vector weights for semantic chunks.",
+      tech: "Azure OpenAI text-embedding-3",
       icon: <Sparkles className="size-5 text-violet-400" />
     },
     {
-      name: "Vector Store Database",
-      purpose: "Store text chunks alongside high-dimensional vectors",
+      name: "Vector Store Storage",
+      purpose: "Indexes and stores text chunks and vector dimensions.",
       tech: "PostgreSQL & pgvector index",
       icon: <Database className="size-5 text-emerald-400" />
     },
     {
-      name: "Similarity Retrieval Engine",
-      purpose: "Perform cosine similarity query to extract matched chunks",
+      name: "Similarity Engine",
+      purpose: "Executes similarity comparisons using cosine distance metrics.",
       tech: "Cosine Distance Vector Search",
       icon: <Binary className="size-5 text-amber-400" />
     },
     {
-      name: "Context Synthesis",
-      purpose: "Combine query with context chunks to generate responses",
-      tech: "Azure OpenAI GPT-4o RAG Prompt",
+      name: "RAG Synthesis",
+      purpose: "Combines query and matched contexts to formulate LLM prompt contexts.",
+      tech: "Context Merger Prompt",
       icon: <Cpu className="size-5 text-rose-400" />
     },
     {
-      name: "Interactive Front-End",
-      purpose: "Present final citation-referenced answers to end-user",
-      tech: "Next.js / FastAPI interface",
+      name: "User Web UI",
+      purpose: "Presents finalized answers with exact citations back to user interface.",
+      tech: "Next.js / FastAPI integration",
       icon: <Sparkles className="size-5 text-primary" />
     }
   ];
@@ -114,9 +114,9 @@ export function ArchitectureSection() {
 
   return (
     <SectionContainer id="architecture">
-      <SectionHeading title="System Architecture" subtitle="Interactive Blueprints" />
+      <SectionHeading title="How It Works" subtitle="System Architecture Diagrams" />
       
-      {/* Selector Tabs */}
+      {/* Tab selectors */}
       <div className="flex justify-center mb-12">
         <div className="flex bg-[#0a0914] border border-white/5 p-1 rounded-2xl max-w-lg w-full">
           <button
@@ -142,73 +142,77 @@ export function ArchitectureSection() {
         </div>
       </div>
 
-      {/* Nodes Map layout */}
-      <div className="max-w-4xl mx-auto w-full relative">
+      {/* Main diagram container */}
+      <div className="max-w-4xl mx-auto w-full relative p-6 rounded-2xl border border-white/5 bg-[#05050a]/40 overflow-hidden">
         
-        {/* Continuous animation overlay path line */}
-        <div className="absolute left-[38px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-primary/30 via-cyan-500/30 to-rose-500/30 hidden md:block" />
+        {/* Blinking Live Simulation Console Status */}
+        <div className="absolute top-4 right-4 flex items-center gap-2 font-mono text-[9px] text-cyan-400 bg-cyan-950/20 border border-cyan-800/30 px-2 py-1 rounded">
+          <span className="size-1.5 rounded-full bg-cyan-400 animate-ping" />
+          <span>LIVE PIPELINE SIMULATION (ACTIVE)</span>
+        </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-6 relative z-10"
-          >
-            {activeNodes.map((node, index) => {
-              const isEven = index % 2 === 0;
-              const glowColor = isEven ? "rgba(139, 92, 246, 0.1)" : "rgba(6, 182, 212, 0.1)";
-              
-              return (
-                <div key={node.name} className="flex gap-6 items-start relative">
-                  
-                  {/* Left Side indicator Node circle */}
-                  <div className="flex flex-col items-center select-none z-10">
-                    <div className="size-10 rounded-xl bg-[#0a0914] border border-white/10 flex items-center justify-center shadow-lg relative group">
-                      <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {node.icon}
-                    </div>
+        {/* Continuous animation path line on desktop */}
+        <div className="absolute left-[54px] top-16 bottom-16 w-[1px] bg-gradient-to-b from-primary/20 via-cyan-500/20 to-rose-500/20 hidden md:block" />
+
+        <div className="mt-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-6 relative z-10"
+            >
+              {activeNodes.map((node, index) => {
+                const isEven = index % 2 === 0;
+                const glowColor = isEven ? "rgba(139, 92, 246, 0.08)" : "rgba(6, 182, 212, 0.08)";
+                
+                return (
+                  <div key={node.name} className="flex gap-6 items-start relative">
                     
-                    {index < activeNodes.length - 1 && (
-                      <div className="w-[1.5px] h-12 bg-white/5 md:hidden" />
-                    )}
-                  </div>
-
-                  {/* Right Side card detail */}
-                  <div className="flex-grow">
-                    <GlassCard
-                      interactive={true}
-                      glowColor={glowColor}
-                      className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 border-white/5 bg-white/[0.01]"
-                    >
-                      <div className="max-w-xl">
-                        <span className="text-[10px] font-bold font-mono text-primary uppercase mb-1 block">
-                          Step 0{index + 1} &bull; {node.tech}
-                        </span>
-                        <h4 className="text-base font-bold text-white mb-1 tracking-wide">
-                          {node.name}
-                        </h4>
-                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                          {node.purpose}
-                        </p>
+                    {/* Left node point */}
+                    <div className="flex flex-col items-center select-none z-10">
+                      <div className="size-10 rounded-xl bg-[#0a0914] border border-white/10 flex items-center justify-center shadow-lg relative group">
+                        <div className="absolute inset-0 bg-primary/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                        {node.icon}
                       </div>
+                    </div>
 
-                      <div className="flex items-center gap-1">
-                        <span className="text-[8px] font-bold font-mono uppercase tracking-widest text-muted-foreground bg-white/5 px-2 py-1 rounded border border-white/5">
-                          Active Flow
-                        </span>
-                        <div className="size-1.5 rounded-full bg-emerald-500 animate-ping" />
-                      </div>
-                    </GlassCard>
+                    {/* Right detail card */}
+                    <div className="flex-grow">
+                      <GlassCard
+                        interactive={true}
+                        glowColor={glowColor}
+                        className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 border-white/5 bg-[#07060c]/50 hover:bg-[#07060c]/80"
+                      >
+                        <div className="max-w-xl">
+                          <span className="text-[9px] font-bold font-mono text-primary uppercase mb-1 block">
+                            STAGE 0{index + 1} &bull; {node.tech}
+                          </span>
+                          <h4 className="text-sm font-bold text-white mb-1 tracking-wide uppercase">
+                            {node.name}
+                          </h4>
+                          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                            {node.purpose}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-1 shrink-0">
+                          <span className="text-[8px] font-bold font-mono uppercase tracking-widest text-muted-foreground bg-white/5 px-2 py-0.5 rounded border border-white/5">
+                            FLOWING
+                          </span>
+                          <div className="size-1.5 rounded-full bg-cyan-400 animate-ping" />
+                        </div>
+                      </GlassCard>
+                    </div>
+
                   </div>
-
-                </div>
-              );
-            })}
-          </motion.div>
-        </AnimatePresence>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
       </div>
     </SectionContainer>

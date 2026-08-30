@@ -98,7 +98,7 @@ export function Header() {
                 href={item.href}
                 onClick={(e) => handleLinkClick(e, item.href)}
                 className={cn(
-                  "relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-colors duration-300 select-none",
+                  "relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-colors duration-300 select-none outline-none focus-visible:ring-1 focus-visible:ring-primary/40 focus-visible:text-white",
                   isActive ? "text-white" : "text-muted-foreground hover:text-white"
                 )}
               >

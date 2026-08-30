@@ -23,7 +23,7 @@ export function Footer() {
         
         <div className="flex items-center gap-6">
           <a
-            href="https://github.com"
+            href="https://github.com/Kaviram2407"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-semibold tracking-wider text-muted-foreground hover:text-white uppercase transition-colors"
@@ -31,7 +31,7 @@ export function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/kaviram2407"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-semibold tracking-wider text-muted-foreground hover:text-white uppercase transition-colors"

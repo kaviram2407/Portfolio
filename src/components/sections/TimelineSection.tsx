@@ -6,114 +6,152 @@ import { SectionHeading } from "../foundations/SectionHeading";
 import { GlassCard } from "../foundations/GlassCard";
 import { AnimWrapper } from "../foundations/AnimWrapper";
 
-interface ExperienceItem {
-  company: string;
-  role: string;
-  location: string;
-  duration: string;
-  highlights: string[];
-  projectDetails?: string;
+interface TechStage {
+  step: string;
+  title: string;
+  desc: string;
 }
 
 export function TimelineSection() {
-  const experiences: ExperienceItem[] = [
+  const systechStages: TechStage[] = [
     {
-      company: "Systech Solutions, Inc.",
-      role: "Data Engineer (Associate)",
-      location: "Chennai, India",
-      duration: "Present",
-      highlights: [
-        "Perform initial data profiling to analyze source system structures and ensure data cleanliness.",
-        "Assist in conceptual, logical, and physical data modeling matching analytical requirements.",
-        "Create source-to-target mapping documents defining business-specific transformation logic.",
-        "Configure ingestion templates in Azure Data Factory to import raw data into ADLS Gen2 Bronze layer.",
-        "Build medallion transformations using Azure Databricks, PySpark, and Delta Lake tables.",
-        "Implement Slowly Changing Dimensions (SCD Type 1 & Type 2) and handle incremental updates.",
-        "Formulate gold-layer aggregate tables matching business reporting star schemas.",
-        "Design automated data-quality testing and validate integrity constraints on target datasets.",
-        "Configure semantic layers and direct connections for Power BI dashboard integration."
-      ],
-      projectDetails: "Simulated the end-to-end StarAir aviation data platform within this role, developing modular ingestion paths and analytical data models."
+      step: "01",
+      title: "Source Analysis",
+      desc: "Perform data profiling and compile source-to-target mapping logic specifying datatype conformance."
     },
     {
-      company: "Virtusa Consultancy",
-      role: "SDE Intern",
-      location: "Chennai, India",
-      duration: "2024",
-      highlights: [
-        "Contributed to the design and frontend scripts of an insurance policy portal using React.js.",
-        "Collaborated with cross-functional teams to gather requirements and optimize application execution.",
-        "Applied agile methodologies to debug responsive features and adapt to project requirement shifts."
-      ]
+      step: "02",
+      title: "Data Modeling",
+      desc: "Build physical, logical, and conceptual models matching business query performance criteria."
     },
     {
-      company: "Besant Technologies",
-      role: "Data Science Intern",
-      location: "Chennai, India",
-      duration: "2024",
-      highlights: [
-        "Cleaned and processed large datasets using Python libraries such as Pandas, NumPy, and Matplotlib.",
-        "Implemented standard regression, classification, and clustering machine learning algorithms.",
-        "Designed Power BI dashboards to track key metrics and business performance trends in real-time."
-      ]
+      step: "03",
+      title: "Ingestion Pipeline",
+      desc: "Configure ADF copy activities and templates to replicate transactional source tables into Bronze folders."
+    },
+    {
+      step: "04",
+      title: "Transformation Layers",
+      desc: "Write PySpark scripts in Databricks to clean values, resolve keys, and compute conformed Silver Delta Lake tables."
+    },
+    {
+      step: "05",
+      title: "Data Quality Assurance",
+      desc: "Enforce null constraints, run integrity checks, and write automated tests verifying ingestion counts."
+    },
+    {
+      step: "06",
+      title: "Analytics Integration",
+      desc: "Build Gold star-schemas, handle SCD history, and configure DirectQuery semantic models in Power BI."
     }
   ];
 
   return (
     <SectionContainer id="timeline">
-      <SectionHeading title="Work Experience" subtitle="Timeline" />
-      
-      <div className="relative pl-6 border-l border-primary/20 max-w-4xl mx-auto flex flex-col gap-12 mt-8">
+      <SectionHeading title="Where I've Worked" subtitle="Experience Timeline" />
+
+      {/* Main Experience Wrapper */}
+      <div className="max-w-4xl mx-auto w-full">
         
-        {experiences.map((exp, index) => {
-          const isFirst = index === 0;
-          
-          return (
-            <AnimWrapper key={exp.company + exp.role} variant="fade-up" delay={index * 0.1}>
-              <div className="relative">
-                
-                {/* Timeline Node connector point */}
-                <div className={`absolute -left-[31px] top-1.5 size-3.5 rounded-full border-2 border-background z-10 transition-colors ${
-                  isFirst ? "bg-primary animate-pulse" : "bg-[#27263b]"
-                }`} />
+        {/* Banner Block for Systech Role */}
+        <AnimWrapper variant="fade-up" className="mb-12">
+          <div className="p-6 rounded-2xl border border-white/5 bg-[#0a0914]/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span className="text-[10px] font-bold font-mono text-primary uppercase">
+                Present &bull; Chennai, India
+              </span>
+              <h3 className="text-xl font-bold text-white tracking-wide mt-1">
+                Data Engineer (Associate)
+              </h3>
+              <h4 className="text-sm font-semibold text-muted-foreground font-mono uppercase tracking-wide">
+                Systech Solutions, Inc.
+              </h4>
+            </div>
+            <div className="text-left md:text-right shrink-0">
+              <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-widest bg-primary/10 text-primary border border-primary/20 uppercase font-mono">
+                Full-Time Role
+              </span>
+            </div>
+          </div>
+        </AnimWrapper>
 
-                {/* Experience details block */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-1">
-                    <div>
-                      <span className="text-[10px] font-bold font-mono text-primary uppercase">
-                        {exp.duration} &bull; {exp.location}
-                      </span>
-                      <h3 className="text-lg font-bold text-white tracking-wide">
-                        {exp.role}
-                      </h3>
-                      <h4 className="text-sm font-semibold text-muted-foreground font-mono">
-                        {exp.company}
-                      </h4>
-                    </div>
-                  </div>
+        {/* 6-Stage Grid Progression */}
+        <h4 className="text-xs font-bold text-white uppercase tracking-widest font-mono text-center mb-8">
+          Engineering Progression Stages
+        </h4>
 
-                  <GlassCard interactive={false} className="mt-3 border-white/5 bg-white/[0.01] p-5">
-                    {exp.projectDetails && (
-                      <p className="text-xs md:text-sm font-semibold text-cyan-400 mb-4 bg-cyan-950/20 border border-cyan-800/20 px-3 py-2 rounded-lg leading-relaxed">
-                        Project Work: {exp.projectDetails}
-                      </p>
-                    )}
-                    
-                    <ul className="list-disc pl-4 flex flex-col gap-2 text-xs md:text-sm text-muted-foreground leading-relaxed">
-                      {exp.highlights.map((item, idx) => (
-                        <li key={idx} className="marker:text-primary">
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </GlassCard>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 mb-16">
+          {systechStages.map((stage, idx) => (
+            <AnimWrapper key={stage.step} variant="fade-up" delay={idx * 0.08}>
+              <GlassCard
+                interactive={true}
+                glowColor="rgba(139, 92, 246, 0.08)"
+                className="p-5 border-white/5 bg-[#07060c]/40 hover:bg-[#07060c]/80 flex gap-4 h-full"
+              >
+                {/* Stage number bubble */}
+                <div className="size-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-mono text-xs font-extrabold text-primary shrink-0 select-none">
+                  {stage.step}
                 </div>
-
-              </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white uppercase tracking-wide mb-1.5">
+                    {stage.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {stage.desc}
+                  </p>
+                </div>
+              </GlassCard>
             </AnimWrapper>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Previous Internships Timeline */}
+        <h4 className="text-xs font-bold text-white uppercase tracking-widest font-mono text-center mb-8">
+          Previous Internships
+        </h4>
+
+        <div className="relative pl-6 border-l border-primary/20 flex flex-col gap-8 max-w-2xl mx-auto">
+          
+          <AnimWrapper variant="fade-up" delay={0.1}>
+            <div className="relative">
+              <div className="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-[#27263b] border-2 border-background" />
+              <div className="flex flex-col gap-1.5">
+                <div>
+                  <span className="text-[9px] font-bold font-mono text-primary uppercase">
+                    2024 &bull; Chennai, India
+                  </span>
+                  <h4 className="text-sm font-bold text-white tracking-wide">
+                    SDE Intern &bull; <span className="text-muted-foreground font-mono text-xs">Virtusa Consultancy</span>
+                  </h4>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Contributed to React.js frontend structures for an insurance policy portal, optimized layouts, and handled cross-device debugging.
+                </p>
+              </div>
+            </div>
+          </AnimWrapper>
+
+          <AnimWrapper variant="fade-up" delay={0.2}>
+            <div className="relative">
+              <div className="absolute -left-[31px] top-1.5 size-3.5 rounded-full bg-[#27263b] border-2 border-background" />
+              <div className="flex flex-col gap-1.5">
+                <div>
+                  <span className="text-[9px] font-bold font-mono text-primary uppercase">
+                    2024 &bull; Chennai, India
+                  </span>
+                  <h4 className="text-sm font-bold text-white tracking-wide">
+                    Data Science Intern &bull; <span className="text-muted-foreground font-mono text-xs">Besant Technologies</span>
+                  </h4>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Conducted data analysis and profiling in Python (Pandas, NumPy, Matplotlib) and designed KPI monitoring reports in Power BI.
+                </p>
+              </div>
+            </div>
+          </AnimWrapper>
+
+        </div>
+
       </div>
     </SectionContainer>
   );

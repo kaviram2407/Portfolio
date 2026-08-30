@@ -3,58 +3,49 @@
 import React from "react";
 import { SectionContainer } from "../foundations/SectionContainer";
 import { SectionHeading } from "../foundations/SectionHeading";
-import { GlassCard } from "../foundations/GlassCard";
 import { AnimWrapper } from "../foundations/AnimWrapper";
-import { GraduationCap } from "lucide-react";
 
 export function EducationSection() {
   return (
     <SectionContainer id="education">
-      <SectionHeading title="Education" subtitle="Academics" />
+      <SectionHeading title="Education" subtitle="Academic Milestones" />
       
-      <div className="max-w-3xl mx-auto w-full">
+      <div className="max-w-3xl mx-auto w-full relative">
         <AnimWrapper variant="fade-up">
-          <GlassCard interactive={false} className="border-white/5 bg-white/[0.01] p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
+          <div className="p-6 md:p-8 rounded-2xl border border-white/5 bg-[#05050a]/40 relative overflow-hidden flex flex-col md:flex-row gap-6 md:items-center justify-between">
             
-            {/* Academic Icon */}
-            <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 text-primary shrink-0">
-              <GraduationCap className="size-6" />
-            </div>
+            {/* Background highlight glow */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-[60px] pointer-events-none" />
 
-            {/* Academic Info */}
-            <div className="flex-grow">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-4">
-                <div>
-                  <span className="text-[10px] font-bold font-mono text-primary uppercase">
-                    2019 - 2024 &bull; Coimbatore, India
-                  </span>
-                  <h3 className="text-xl font-bold text-white tracking-wide mt-0.5">
-                    M.Tech [5-Year Integrated]
-                  </h3>
-                  <h4 className="text-sm font-semibold text-muted-foreground font-mono">
-                    Computer Science and Engineering
-                  </h4>
-                </div>
-              </div>
-
-              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-6 border-l-2 border-white/5 pl-3">
-                Completed five years of integrated study at Sri Krishna College of Engineering and Technology, covering core software engineering, computer network infrastructure, algorithms, database designs, and machine learning models.
+            <div>
+              <span className="text-[10px] font-bold font-mono text-primary uppercase block mb-1">
+                Integrated 5-Year Master's Degree &bull; 2019 - 2024
+              </span>
+              <h3 className="text-2xl font-extrabold text-white tracking-wide leading-tight mb-2">
+                M.Tech in Computer Science and Engineering
+              </h3>
+              <p className="text-sm font-semibold text-muted-foreground font-mono uppercase mb-4">
+                Sri Krishna College of Engineering and Technology
               </p>
-
-              {/* CGPA display */}
-              <div className="flex items-center gap-3 bg-white/5 border border-white/5 rounded-xl px-4 py-3 max-w-xs">
-                <span className="text-[10px] font-bold font-mono uppercase tracking-wider text-muted-foreground">
-                  Performance
-                </span>
-                <div className="h-4 w-px bg-white/10" />
-                <span className="text-xs font-semibold text-white">
-                  CGPA: <span className="text-sm font-bold text-primary">8.72</span> / 10.00
-                </span>
-              </div>
-
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed max-w-xl">
+                Coimbatore, India. Focused on core computer architectures, distributed algorithms, database engines, data structures, and machine learning models.
+              </p>
             </div>
 
-          </GlassCard>
+            {/* GPA display panel */}
+            <div className="shrink-0 flex flex-col items-start md:items-end justify-center gap-1 bg-white/5 border border-white/5 p-4 rounded-xl font-mono relative z-10">
+              <span className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                Academic CGPA
+              </span>
+              <span className="text-2xl font-extrabold text-white leading-none">
+                8.72
+              </span>
+              <span className="text-[9px] text-muted-foreground">
+                scale: 10.00 max
+              </span>
+            </div>
+
+          </div>
         </AnimWrapper>
       </div>
     </SectionContainer>
