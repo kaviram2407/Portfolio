@@ -124,8 +124,7 @@ export function ProjectsSection() {
   ];
 
   const rfpTech = [
-    "Python", "FastAPI", "Next.js", "Azure OpenAI", "RAG", 
-    "PostgreSQL", "pgvector", "Vector Embeddings", "PyMuPDF"
+    "Python", "FastAPI", "Next.js", "PyMuPDF", "PostgreSQL", "pgvector", "Azure OpenAI", "RAG"
   ];
 
   const scrollToSection = (id: string) => {
@@ -176,7 +175,7 @@ export function ProjectsSection() {
               {/* Case Study Details */}
               <div className="border-l-2 border-primary/20 pl-4 my-2">
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  An aviation-focused data solution designed to process flight operation details, airport logistics, sales, and carrier logs. Built on a Medallion framework, the platform replicates operational tables, profiles schema types, enforces validation, handles historical SCD, and delivers structured star schemas for business reporting.
+                  A data engineering simulation and case study modeling transactional flight details, airport logistics, sales, and carrier logs. Involving approximately 22 operational source tables, the implementation covered the end-to-end pipeline from Azure Data Factory (ADF) ingestion into Bronze storage, conformed Spark transformations in Azure Databricks (Silver), Slowly Changing Dimension (SCD Type 1 & 2) delta tracking, and structured Gold star-schema aggregation for Power BI analytics.
                 </p>
               </div>
 
@@ -338,7 +337,7 @@ export function ProjectsSection() {
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {rfpTech.slice(0, 5).map((tech) => (
+                  {rfpTech.map((tech) => (
                     <span key={tech} className="px-2 py-0.5 rounded border border-white/5 bg-white/5 text-[9px] text-muted-foreground font-mono">
                       {tech}
                     </span>

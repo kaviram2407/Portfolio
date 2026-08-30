@@ -43,7 +43,7 @@ export function AboutSection() {
     {
       title: "AI / GenAI",
       subtitle: "RAG & LLM Integration",
-      desc: "Calculating OpenAI vector embeddings, indexing pgvector databases, and merging contexts."
+      desc: "Exploring RAG workflows using embeddings, pgvector similarity search, and Azure OpenAI."
     }
   ];
 
