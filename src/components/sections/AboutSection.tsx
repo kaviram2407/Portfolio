@@ -113,7 +113,7 @@ export function AboutSection() {
             Professional Summary
           </h3>
           <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-8 border-l-2 border-primary/20 pl-4 break-words w-full">
-            I am a Data Engineer (Associate) at Systech Solutions, focused on building reliable data pipelines, transforming data using cloud-based platforms, and working with modern data engineering technologies. My work spans data ingestion, transformation, data quality, dimensional modeling, analytics, and emerging AI/GenAI applications.
+            I am a Data Engineer (Associate) at Systech Solutions and a Microsoft Certified Fabric Data Engineer Associate. My focus is on building reliable data pipelines, transforming data using cloud platforms like Azure Databricks, PySpark, and Microsoft Fabric, and working with modern data engineering technologies. My work spans data ingestion, transformation, data quality, dimensional modeling, analytics, and emerging AI/GenAI applications.
           </p>
 
           <h3 className="text-xs font-bold text-white uppercase tracking-widest font-mono mb-6">

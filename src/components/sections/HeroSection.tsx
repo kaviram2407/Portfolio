@@ -349,7 +349,7 @@ export function HeroSection() {
               <div>
                 <span className="text-[9px] text-muted-foreground block uppercase mb-1">Cloud Data</span>
                 <span className="text-[11px] font-bold text-white block uppercase">Microsoft Fabric</span>
-                <span className="text-[9px] text-cyan-400 font-medium">Azure</span>
+                <span className="text-[9px] text-cyan-400 font-medium">Certified Associate &bull; Azure</span>
               </div>
               <div>
                 <span className="text-[9px] text-muted-foreground block uppercase mb-1">AI / GenAI</span>

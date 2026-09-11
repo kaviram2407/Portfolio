@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kaviram.vercel.app"),
   title: "Kaviram Paramasivan | Data Engineer + GenAI",
-  description: "Data Engineer (Associate) at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
+  description: "Data Engineer (Associate) & Microsoft Certified Fabric Data Engineer Associate at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
   robots: "index, follow",
   openGraph: {
     title: "Kaviram Paramasivan | Data Engineer + GenAI",
-    description: "Data Engineer (Associate) at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
+    description: "Data Engineer (Associate) & Microsoft Certified Fabric Data Engineer Associate at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
     type: "website",
     locale: "en_US",
     url: "https://kaviram.vercel.app",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kaviram Paramasivan | Data Engineer + GenAI",
-    description: "Data Engineer (Associate) at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
+    description: "Data Engineer (Associate) & Microsoft Certified Fabric Data Engineer Associate at Systech Solutions focused on Azure Databricks, PySpark, Microsoft Fabric, SQL, Python and AI/GenAI applications.",
   },
 };
 

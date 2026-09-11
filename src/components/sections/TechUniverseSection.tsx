@@ -33,7 +33,7 @@ export function TechUniverseSection() {
     },
     {
       name: "Microsoft Fabric",
-      desc: "SaaS-based unified analytics ecosystem, merging storage (OneLake), compute (Synapse), and visual layers (Power BI).",
+      desc: "SaaS-based unified analytics ecosystem, merging storage (OneLake), compute (Synapse), and visual layers (Power BI). Backed by Microsoft Certified: Fabric Data Engineer Associate credential.",
       category: "primary",
       relations: ["Power BI", "ADLS Gen2"]
     },
